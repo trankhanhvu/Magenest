@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <!--event change firstname = magenest of customer when click save-->
+    <event name="adminhtml_customer_save_after">
+        <observer name="change_firstname" instance="Magenest\Movie\Observer\ChangeCustomerFirstname" />
+    </event>
+
+    <!--event change rating = 0-->
+    <event name="save_movie">
+        <observer name="change_rating" instance="Magenest\Movie\Observer\ChangeRating" />
+    </event>
+
+    <!--event change ping >> pong config-->
+    <event name="admin_system_config_changed_section_movie">
+        <observer name="change_ping_to_pong" instance="Magenest\Movie\Observer\ChangeMagenestTextfield" />
+    </event>
+</config>

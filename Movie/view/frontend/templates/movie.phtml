@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Movie Information</h2>
+
+<table>
+    <tr>
+        <th>Movie</th>
+        <th>Description</th>
+        <th>Rating</th>
+        <th>Director</th>
+        <th>Actor</th>
+    </tr>
+
+    <?php foreach ($block->getMovieInformation() as $info): ?>
+    <tr>
+        <td><?php echo $info['nameMovie'] ?></td>
+        <td><?php echo $info['description'] ?></td>
+        <td><?php echo $info['rating'] ?></td>
+        <td><?php echo $info['nameDirector'] ?></td>
+        <td><?php echo $info['nameActor'] ?></td>
+    </tr>
+
+    <?php endforeach; ?>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <!--test-->
+        <add id="Magenest_Movie::movie_menu"
+             title="Movie"
+             module="Magenest_Movie"
+             sortOrder="10"
+             resource="Magenest_Movie::movie"
+        />
+        <!-- START: new node -->
+        <add id="Magenest_Movie::movie_submenu"
+             title="Movie Information"
+             module="Magenest_Movie"
+             sortOrder="10"
+             resource="Magenest_Movie::movieinfo"
+
+             parent="Magenest_Movie::movie_menu"
+
+        />
+
+        <add id="Magenest_Movie::movie_movie"
+             title="Movie"
+             module="Magenest_Movie"
+             sortOrder="20"
+             resource="Magenest_Movie::movielist"
+
+             parent="Magenest_Movie::movie_submenu"
+             action="movie/movie/index"
+        />
+
+        <add id="Magenest_Movie::movie_actor"
+             title="Actor"
+             module="Magenest_Movie"
+             sortOrder="30"
+             resource="Magenest_Movie::actorlist"
+
+             parent="Magenest_Movie::movie_submenu"
+             action="movie/actor/index"
+        />
+
+        <add id="Magenest_Movie::movie_director"
+             title="Director"
+             module="Magenest_Movie"
+             sortOrder="40"
+             resource="Magenest_Movie::directorlist"
+
+             parent="Magenest_Movie::movie_submenu"
+             action="movie/director/index"
+        />
+
+
+        <!--submenu2-->
+        <add id="Magenest_Movie::movie_submenu2"
+             title="hahaha"
+             module="Magenest_Movie"
+             sortOrder="9999"
+             resource="Packt_HelloWorld::love"
+
+             parent="Magenest_Movie::movie_menu"
+
+        />
+
+
+
+    </menu>
+</config>
