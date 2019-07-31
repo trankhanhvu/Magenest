@@ -33,6 +33,18 @@
 
                     </resource>
 
+                    <resource id="Magenest_Movie::module_install" title="Module Install Information" >
+
+                        <resource id="Magenest_Movie::1st" title="1st content container" />
+
+                    </resource>
+
+                    <resource id="Magenest_Movie::about" title="About Information" >
+
+                        <resource id="Magenest_Movie::2nd" title="2nd content container" />
+
+                    </resource>
+
                 </resource>
 
             </resource>

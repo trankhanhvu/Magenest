@@ -51,15 +51,46 @@
         />
 
 
-        <!--submenu2-->
+        <!--submenu 2-->
         <add id="Magenest_Movie::movie_submenu2"
-             title="hahaha"
+             title="Module Install"
              module="Magenest_Movie"
-             sortOrder="9999"
-             resource="Packt_HelloWorld::love"
+             sortOrder="50"
+             resource="Magenest_Movie::module_install"
 
              parent="Magenest_Movie::movie_menu"
 
+        />
+
+        <add id="Magenest_Movie::1st"
+             title="1st content container"
+             module="Magenest_Movie"
+             sortOrder="60"
+             resource="Magenest_Movie::1st"
+
+             parent="Magenest_Movie::movie_submenu2"
+             action="movie/moduleinstall/index"
+        />
+
+        <!--submenu 3-->
+        <add id="Magenest_Movie::movie_submenu3"
+             title="About"
+             module="Magenest_Movie"
+             sortOrder="70"
+             resource="Magenest_Movie::about"
+
+             parent="Magenest_Movie::movie_menu"
+
+        />
+
+        <add id="Magenest_Movie::2nd"
+             title="2nd content container"
+             module="Magenest_Movie"
+             sortOrder="80"
+             resource="Magenest_Movie::2nd"
+
+             parent="Magenest_Movie::movie_submenu3"
+             action="movie/about/index"
         />
 
 

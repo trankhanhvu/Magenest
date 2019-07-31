@@ -39,7 +39,7 @@
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
-                <item name="submit_url" path="*/*/save" xsi:type="url" />
+                <item name="submit_url" path="*/*/save" xsi:type="url"/>
             </item>
         </argument>
     </dataSource>
@@ -65,6 +65,13 @@
                     <item name="dataScope" xsi:type="string">name</item>
                 </item>
             </argument>
+
+            <settings>
+                <required>true</required>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
         </field>
 
         <field name="description">
@@ -87,13 +94,16 @@
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">magenest_movie</item>
                     <item name="dataScope" xsi:type="string">rating</item>
+                    <item name="additionalInfo" xsi:type="string" translate="true">
+                        <![CDATA[<span style="color:red"><b>Rating from 1 to 10 !!!</b></span>]]></item>
                 </item>
             </argument>
 
             <settings>
                 <required>true</required>
                 <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="validate-digits-range" xsi:type="string">1-10</rule>
                 </validation>
             </settings>
 

@@ -60,5 +60,23 @@ class UpgradeData implements UpgradeDataInterface {
             $image->save();
             $setup->endSetup();
         }
+
+        if (version_compare($context->getVersion(), '2.0.2') < 0)
+        {
+            $setup->startSetup();
+
+            $orderTable = 'sales_order';
+
+            $setup->getConnection()
+                ->addColumn(
+                    $setup->getTable($orderTable),
+                    'odd/even',
+                    [
+                        'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                        'length' => 255,
+                        'comment' =>'Odd/Even'
+                    ]
+                );
+        }
     }
 }

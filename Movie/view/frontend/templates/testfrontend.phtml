@@ -1,0 +1,172 @@
+
+<script>
+
+</script>
+
+<h2>Hello Test Frontend</h2>
+
+<style>
+    .button1 {color: green;}
+    .button2 {color: dodgerblue;}
+    .button3 {color: orange;}
+
+    form {
+        border: 3px solid #f1f1f1;
+    }
+
+    /* Full-width inputs */
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+    .container button[type*='submit']{
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    /* Add a hover effect for buttons */
+    button:hover {
+        opacity: 0.8;
+    }
+
+    /* Extra style for the cancel button (red) */
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    /* Center the avatar image inside this container */
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+    }
+
+    /* Avatar image */
+    img.avatar {
+
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+    }
+
+    /* Add padding to containers */
+    .container {
+        padding: 16px;
+    }
+
+    /* The "Forgot password" text */
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+        .cancelbtn {
+            width: 100%;
+        }
+    }
+</style>
+
+<script>
+    function sayHello()
+    {
+        window.alert('Hello World');
+    }
+
+    require([
+            'Magento_Ui/js/modal/alert',
+            'jquery'
+        ],
+        function(alert,$) {
+            $(".button2").click(function ()
+            {
+                alert
+                ({
+                    title: 'Test Frontend',
+                    content: 'Hello World',
+                    actions: {
+                        always: function(){
+                        }
+                    }
+                });
+            })
+        });
+
+
+</script>
+
+
+
+<html>
+    <button class="button1" onclick="sayHello()">Open Modal</button>
+    <button class="button2" >Open Magento Login Modal</button>
+    <button class="button3" href="#">Open Custom Login Modal</button>
+
+    <div id="popup-modal">
+        <form action="action_page.php">
+            <div class="imgcontainer">
+                <img height="50" width="50" src="http://localhost/m2/pub/media/customer/6/6/66998683_2428602667226806_61832161669414912_n_1.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+    <script>
+        require(
+            [
+                'jquery',
+                'Magento_Ui/js/modal/modal'
+            ],
+            function($, modal)
+            {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: 'Login Form',
+                    buttons: []
+                };
+
+                var popup = modal(options, $('#popup-modal'));
+
+                $(".button3").click(function () {
+                    $('#popup-modal').modal('openModal');
+                })
+
+            }
+        );
+    </script>
+</html>

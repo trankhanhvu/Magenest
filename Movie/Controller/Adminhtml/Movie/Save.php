@@ -16,8 +16,6 @@ class Save extends \Magento\Backend\App\Action
         $rating=$this->getRequest()->getParam('rating');
         $director_id =$this->getRequest()->getParam('director_id');
 
-        if(is_numeric($rating))
-        {
 
             $movie = $objectManager->create('Magenest\Movie\Model\Movie');
             $movie->setName($name);
@@ -38,13 +36,6 @@ class Save extends \Magento\Backend\App\Action
             $objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
 
             $this->_redirect('*/*/');
-        }
-        else
-        {
-            $this->messageManager->addError(__('Rating must be a number!!!'));
-            $objectManager->get('Magento\Backend\Model\Session')->setFormData(true);
-            $this->_redirect('*/*/add');
-        }
 
 
     }
