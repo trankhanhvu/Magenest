@@ -4,15 +4,15 @@
 
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">new_movie_form.new_movie_form_data_source</item>
-            <item name="deps" xsi:type="string">new_movie_form.new_movie_form_data_source</item>
+            <item name="provider" xsi:type="string">edit_movie_form.edit_movie_form_data_source</item>
+            <item name="deps" xsi:type="string">edit_movie_form.edit_movie_form_data_source</item>
         </item>
 
         <item name="label" xsi:type="string" translate="true">Subscription Information</item>
 
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
-            <item name="namespace" xsi:type="string">new_movie_form</item>
+            <item name="namespace" xsi:type="string">edit_movie_form</item>
         </item>
 
         <item name="template" xsi:type="string">templates/form/collapsible</item>
@@ -29,11 +29,11 @@
     </argument>
 
 
-    <dataSource name="sampleform_form_data_source">
+    <dataSource name="editform_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magenest\Movie\Model\Movie\DataProvider</argument>
-            <argument name="name" xsi:type="string">new_movie_form_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">movie_id</argument>
+            <argument name="name" xsi:type="string">edit_movie_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">magenest_movie.movie_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
         </argument>
         <argument name="data" xsi:type="array">
@@ -45,8 +45,6 @@
     </dataSource>
 
     <fieldset name="movie_details">
-
-
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="collapsible" xsi:type="boolean">false</item>
@@ -61,7 +59,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Movie Name</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">magenest_movie</item>
+                    <item name="source" xsi:type="string">movie_details</item>
                     <item name="dataScope" xsi:type="string">name</item>
                 </item>
             </argument>
@@ -93,7 +91,7 @@
                     <item name="label" xsi:type="string" translate="true">Rating</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">magenest_movie</item>
-                    <item name="dataScope" xsi:type="string">rating</item>
+                    <item name="daEtaScope" xsi:type="string">rating</item>
                     <item name="additionalInfo" xsi:type="string" translate="true">
                         <![CDATA[<span style="color:red"><b>Rating from 1 to 10 !!!</b></span>]]></item>
                 </item>
@@ -107,7 +105,6 @@
                 </validation>
             </settings>
 
-
         </field>
 
         <field name="director_id">
@@ -120,6 +117,17 @@
                     <item name="formElement" xsi:type="string">select</item>
                     <item name="source" xsi:type="string">magenest_movie</item>
                     <item name="dataScope" xsi:type="string">director_id</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="idActor">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magenest\Movie\Model\Config\Source\Actor</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Actors : </item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
                 </item>
             </argument>
         </field>

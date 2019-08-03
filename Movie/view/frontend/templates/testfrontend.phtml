@@ -1,8 +1,4 @@
 
-<script>
-
-</script>
-
 <h2>Hello Test Frontend</h2>
 
 <style>
@@ -84,40 +80,19 @@
     }
 </style>
 
-<script>
-    function sayHello()
-    {
-        window.alert('Hello World');
-    }
-
-    require([
-            'Magento_Ui/js/modal/alert',
-            'jquery'
-        ],
-        function(alert,$) {
-            $(".button2").click(function ()
-            {
-                alert
-                ({
-                    title: 'Test Frontend',
-                    content: 'Hello World',
-                    actions: {
-                        always: function(){
-                        }
-                    }
-                });
-            })
-        });
-
-
-</script>
 
 
 
 <html>
+
+
     <button class="button1" onclick="sayHello()">Open Modal</button>
-    <button class="button2" >Open Magento Login Modal</button>
+    <button class="button2" href="#">Open Magento Login Modal</button>
     <button class="button3" href="#">Open Custom Login Modal</button>
+
+    <div class="hello"></div>
+
+
 
     <div id="popup-modal">
         <form action="action_page.php">
@@ -144,29 +119,5 @@
             </div>
         </form>
     </div>
-    <script>
-        require(
-            [
-                'jquery',
-                'Magento_Ui/js/modal/modal'
-            ],
-            function($, modal)
-            {
-                var options = {
-                    type: 'popup',
-                    responsive: true,
-                    innerScroll: true,
-                    title: 'Login Form',
-                    buttons: []
-                };
 
-                var popup = modal(options, $('#popup-modal'));
-
-                $(".button3").click(function () {
-                    $('#popup-modal').modal('openModal');
-                })
-
-            }
-        );
-    </script>
 </html>
