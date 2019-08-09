@@ -24,7 +24,7 @@ class Save extends \Magento\Backend\App\Action
             $movie = $objectManager->create('Magenest\Movie\Model\Movie')->load($id);
             $movie->setName($name);
             $movie->setDescription($description);
-            $movie->setRating($rating);
+            $movie->setRating($_POST['star']*2);
             $movie->setDirector_id($director_id);
             $movie->save();
         }
@@ -61,7 +61,7 @@ class Save extends \Magento\Backend\App\Action
 
             $parameters =['id'=>$movie->getMovie_id()];
 
-            $this->_eventManager->dispatch('save_movie', $parameters);
+            /*$this->_eventManager->dispatch('save_movie', $parameters);*/
 
             $this->messageManager->addSuccess(__('Successfully saved the item.'));
             $objectManager->get('Magento\Backend\Model\Session')->setFormData(false);

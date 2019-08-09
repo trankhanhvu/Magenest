@@ -59,4 +59,17 @@
     <type name="Magento\Checkout\Controller\Cart\Add">
         <plugin name="Magenest_Movie::add_child_to_cart" type="Magenest\Movie\Plugin\Checkout\Controller\Cart\Add" sortOrder="1"/>
     </type>
+
+    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
+        <arguments>
+            <argument name="addFilterStrategies" xsi:type="array">
+                <item name="fulltext" xsi:type="object">Magento\CatalogSearch\Ui\DataProvider\Product\AddFulltextFilterToCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--add text after currency-->
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="magenest_movie_product_list_text" type="Magenest\Movie\Plugin\ProductListPlugin" />
+    </type>
 </config>

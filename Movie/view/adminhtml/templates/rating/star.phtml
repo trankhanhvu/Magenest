@@ -1,0 +1,51 @@
+<style>
+    [type*='radio']{
+        display: none !important;
+    }
+    .admin__field-control{
+        margin-left: 30px;
+    }
+    .admin__field-control:nth-child(2){
+        display: flex;
+    }
+    [for='Price_5']{
+        order: 5;
+    }
+    [for='Price_4']{
+        order: 4;
+    }
+    [for='Price_3']{
+        order: 3;
+    }
+    [for='Price_2']{
+        order: 2;
+    }
+    [for='Price_1']{
+        order: 1;
+    }
+</style>
+
+        <div class="admin__field admin__field-rating" style="margin-left: 19%;display: flex;align-items: center; position: relative; top: -12.5px">
+
+            <label class="admin__field-label"><span>Rating</label>
+
+            <div class="admin__field-control" data-widget="ratingControl">
+                <?php for($i = 5; $i >= 1; $i--){ ?>
+                    <input type="radio"  name="star" data-form-part="edit_movie_form" id="Price_<?php echo $i ?>" value="<?php echo $i ?>" aria-required="true" <?php if ($block->getRating()/2 === $i): ?> checked <?php endif; ?> />
+                    <label for="Price_<?php  echo $i ?>" style="font-size: 20px">&#9733;</label>
+                <?php } ?>
+            </div>
+        </div>
+        <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+    <script>
+        require([
+            "jquery",
+            "mage/mage",
+            "Magento_Review/js/rating"
+        ], function($){
+            "use strict";
+
+            $('[data-widget=ratingControl]').ratingControl();
+        });
+    </script>
+

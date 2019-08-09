@@ -1,9 +1,9 @@
 <?php
+namespace Magenest\Frontend\Controller\Index;
 
-namespace Magenest\Movie\Controller\Index;
-class Index extends \Magento\Framework\App\Action\Action
+class Moviesearch extends \Magento\Framework\App\Action\Action
 {
-    /** @var \Magento\Framework\View\Result\PageFactory */
+
     protected $resultPageFactory;
 
     public function __construct(
@@ -18,7 +18,7 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-
         return $resultPage;
+
     }
 }

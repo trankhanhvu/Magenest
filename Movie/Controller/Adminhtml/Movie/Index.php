@@ -17,6 +17,8 @@ class Index extends \Magento\Backend\App\Action
         /*$resultPage->setActiveMenu('Packt_HelloWorld::subscription');
         $resultPage->addBreadcrumb(__('HelloWorld'),__('HelloWorld'));
         $resultPage->addBreadcrumb(__('Manage Subscriptions'), __('Manage Subscriptions'));*/
+
+        $this->_setActiveMenu('Magenest_Movie::movie_menu');
         $resultPage->getConfig()->getTitle()->prepend(__('Movies'));
         return $resultPage;
     }

@@ -36,14 +36,12 @@ class InlineEdit extends \Magento\Backend\App\Action
                     /** load your model to update the data */
                     $model = $this->_objectManager->create('Magenest\Movie\Model\Movie')->load($entityId);
                     try {
-                        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-                        $connection = $objectManager->get('Magento\Framework\App\ResourceConnection')
-                            ->getConnection('\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION');
-                        $director = $connection->fetchOne("SELECT director_id FROM magenest_director WHERE  name ='". $postItems[$entityId]['nameDirector'] ."'");
 
-                        $model->setData('name',$postItems[$entityId]['nameMovie']);
+
+                        $model->setData('name',$postItems[$entityId]['name']);
                         $model->setData('description',$postItems[$entityId]['description']);
-                        $model->setData('director_id',$director);
+                        $model->setData('rating',$postItems[$entityId]['rating']);
+                        $model->setData('director_id',$postItems[$entityId]['director_id']);
                         $model->save();
                     } catch (\Exception $e) {
                         $messages[] = "[Error:]  {$e->getMessage()}";

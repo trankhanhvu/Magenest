@@ -80,8 +80,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->_loadedData[$movie->getId()] = $movie->getData();
         }
 
-
-
         return $this->_loadedData;
     }
 }

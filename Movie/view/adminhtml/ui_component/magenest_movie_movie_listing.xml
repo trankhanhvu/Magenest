@@ -23,13 +23,13 @@
 
     </argument>
 
-    <dataSource name="nameOfDataSource">
+    <dataSource name="magenest_movie_movie_listing_data_source">
 
         <argument name="dataProvider" xsi:type="configurableObject">
 
             <argument name="class" xsi:type="string">
-                <!--Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider-->
-                Magenest\Movie\Model\Movie\Grid\DataProvider
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+                <!--Magenest\Movie\Model\Movie\Grid\DataProvider-->
             </argument>
             <argument name="name" xsi:type="string">magenest_movie_movie_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">movie_id</argument>
@@ -57,7 +57,9 @@
 
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
+
         <filterSearch name="fulltext"/>
+
         <filters name="listing_filters"/>
 
         <massaction name="listing_massaction">
@@ -93,6 +95,23 @@
                     <label translate="true">Edit</label>
                 </settings>
             </action>
+
+            <action name="change_status">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">change_status</item>
+                        <item name="label" xsi:type="string" translate="true">Change status</item>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">Magenest\Movie\Ui\Component\MassAction\Status\Options</argument>
+                    <argument name="data" xsi:type="array">
+                        <item name="urlPath" xsi:type="string">rewardpoints/earningrates/massStatus</item>
+                        <item name="paramName" xsi:type="string">status</item>
+                    </argument>
+                </argument>
+            </action>
+
         </massaction>
 
         <paging name="listing_paging"/>
@@ -100,6 +119,18 @@
     </listingToolbar>
 
     <columns name="spinner_columns">
+
+        <!--<argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="editorConfig" xsi:type="array">
+                <item name="templates" xsi:type="array">
+                    <item name="record" xsi:type="array">
+                        <item name="component" xsi:type="string">Magenest_Movie/js/grid/editing/rating</item>
+                    </item>
+                </item>
+            </item>
+        </item>
+        </argument>-->
 
         <settings>
             <editorConfig>
@@ -111,6 +142,12 @@
                 <param name="enabled" xsi:type="boolean">true</param>
                 <param name="selectProvider" xsi:type="string">
                     magenest_movie_movie_listing.magenest_movie_movie_listing.spinner_columns.ids
+                </param>
+
+                <param name="templates" xsi:type="array">
+                    <item name="record" xsi:type="array">
+                        <item name="component" xsi:type="string">Magenest_Movie/js/grid/editing/rating</item>
+                    </item>
                 </param>
             </editorConfig>
             <childDefaults>
@@ -162,7 +199,7 @@
             </argument>
         </column>-->
 
-        <column name="nameMovie">
+        <column name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
@@ -192,28 +229,47 @@
             </argument>
         </column>
 
-        <column name="rating" class="Magenest\Movie\Ui\Component\Listing\Column\Rating">
+        <!--<column name="rating" class="Magenest\Movie\Ui\Component\Listing\Column\Rating">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
                     <item name="filter" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Rating</item>
-                </item>
-            </argument>
-        </column>
 
-        <!--<column name="director_id">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">textRange</item>
-                    <item name="label" xsi:type="string" translate="true">Director ID</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
                 </item>
             </argument>
         </column>-->
 
-        <column name="nameDirector">
+        <column name="rating">
             <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Magenest\Movie\Model\Config\Source\DirectorName</item>
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">Magenest_Movie/grid/rating</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Rating</item>
+
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                            <item name="validate-number" xsi:type="boolean">true</item>
+                            <item name="validate-digits-range" xsi:type="string">1-10</item>
+                        </item>
+                    </item>
+
+                    <!--<item name="editor" xsi:type="array">rating</item>-->
+                </item>
+            </argument>
+        </column>
+
+        <column name="director_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magenest\Movie\Model\Config\Source\Director</item>
 
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">select</item>
@@ -222,6 +278,7 @@
 
                     <item name="formElement" xsi:type="string">select</item>
                     <item name="source" xsi:type="string">movie</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
 
                     <item name="editor" xsi:type="array">
                         <item name="editorType" xsi:type="string">select</item>

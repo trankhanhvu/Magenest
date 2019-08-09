@@ -18,18 +18,14 @@ class Rating extends \Magento\Ui\Component\Listing\Columns\Column {
 
             foreach ($dataSource['data']['items'] as & $item) {
 
-                if($item['rating'] == 0)
-                {
-                    $item['rating'] = html_entity_decode( "<strong style='color: red'>Zero star !!!</strong>");
-                }
-                else
-                {
+
+
                     $rating = "<div class='field-summary-rating'><div class='rating-box'>";
                     $rating = $rating . "<div class='rating' style='width:" . $item['rating']*10 ."%;'>";
                     $rating = $rating . "</div></div></div>";
 
                     $item['rating'] = html_entity_decode($rating);
-                }
+
 
 
             }

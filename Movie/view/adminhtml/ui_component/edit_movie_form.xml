@@ -84,16 +84,18 @@
             </argument>
         </field>
 
-        <field name="rating">
+        <!--<field name="rating">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">int</item>
                     <item name="label" xsi:type="string" translate="true">Rating</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">magenest_movie</item>
-                    <item name="daEtaScope" xsi:type="string">rating</item>
+                    <item name="dataScope" xsi:type="string">rating</item>
                     <item name="additionalInfo" xsi:type="string" translate="true">
                         <![CDATA[<span style="color:red"><b>Rating from 1 to 10 !!!</b></span>]]></item>
+
+                    <item name="elementTmpl" xsi:type="string">Magenest_Movie/form/elements/rating</item>
                 </item>
             </argument>
 
@@ -105,7 +107,11 @@
                 </validation>
             </settings>
 
-        </field>
+        </field>-->
+
+        <htmlContent name="customer_edit_tab_view_content">
+            <block class="Magenest\Movie\Block\Adminhtml\Movie\Rating\Star" name="ratinga" template="Magenest_Movie::rating/star.phtml"/>
+        </htmlContent>
 
         <field name="director_id">
             <argument name="data" xsi:type="array">

@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    require(["jquery"],function($) {
+        $( "#buttonSave" ).click(function() {
+            var customurl = "<?php echo $this->getUrl().'frontend/customer/save'?>";
+            console.log(customurl);
+            $.ajax({
+                url: customurl,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id: $(".id").val(),
+                    firstname: $(".firstname").val(),
+                    lastname: $(".lastname").val(),
+                },
+                complete: function(response) {
+                    console.log('success');
+                    console.log(response);
+                },
+                error: function (xhr, status, errorThrown) {
+                    console.log('fail');
+                    console.log('Error happens. Try again.');
+                }
+            });
+        });
+    });
+</script>
+
+<div class="info">
+    <form action="">
+        First name: <input type="text" class="firstname" name="firstname" value="<?php echo $block->getCustomerFirstName(); ?>"><br>
+        Last name: <input type="text" class="lastname" name="lastname" value="<?php echo $block->getCustomerLastName(); ?>"><br>
+        <input type="hidden" class="id" value="<?php echo $block->getCustomerId(); ?>"><br>
+        <input type="button" value="Submit" id="buttonSave">
+    </form>
+</div>
+

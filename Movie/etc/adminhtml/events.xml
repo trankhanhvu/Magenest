@@ -2,9 +2,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
 
     <!--event change firstname = magenest of customer when click save-->
-    <event name="adminhtml_customer_save_after">
+    <!--<event name="adminhtml_customer_save_after">
         <observer name="change_firstname" instance="Magenest\Movie\Observer\ChangeCustomerFirstname" />
-    </event>
+    </event>-->
 
     <!--event change rating = 0-->
     <event name="save_movie">
