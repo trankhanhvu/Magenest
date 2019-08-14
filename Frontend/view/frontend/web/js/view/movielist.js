@@ -3,9 +3,27 @@ define([
     'uiComponent',
     'mage/url',
     'mage/storage',
-], function (ko, Component, urlBuilder,storage) {
+    'jquery'
+], function (ko, Component, urlBuilder,storage,$) {
     'use strict';
 
+    var customurl = urlBuilder.build('frontend/index/movie?name=haha');
+    console.log(customurl);
+
+     var s = $.ajax({
+            url: customurl,
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            complete: function(response) {
+                console.log('success');
+            },
+            error: function () {
+                console.log('fail');
+                console.log('Error happens. Try again.');
+            }
+        }).responseJSON;
+     console.log(s);
 
     return Component.extend({
 
@@ -22,7 +40,7 @@ define([
         },*/
         initObservable: function(){
             this._super();
-            this.observe('name');
+            this.observe({'name' : ''});
 
             return this;
         },

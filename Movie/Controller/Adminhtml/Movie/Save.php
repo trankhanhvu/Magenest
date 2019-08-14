@@ -46,15 +46,19 @@ class Save extends \Magento\Backend\App\Action
         $sql = "DELETE FROM magenest_movie_actor WHERE movie_id ='".$movie->getMovie_id() ."'";
         $connection->query($sql);
 
-        if($_POST['idActor'] != "")
+        if(isset($_POST['idActor']))
         {
-            foreach ($_POST['idActor'] as $actorID)
+            if($_POST['idActor'] != "")
             {
-                $sql = "INSERT INTO magenest_movie_actor VALUES ('". $movie->getMovie_id() . "',
+                foreach ($_POST['idActor'] as $actorID)
+                {
+                    $sql = "INSERT INTO magenest_movie_actor VALUES ('". $movie->getMovie_id() . "',
                         '". $actorID ."')";
-                $connection->query($sql);
+                    $connection->query($sql);
+                }
             }
         }
+
 
 
             //SEND EVENT CHANGE RATING = 0
