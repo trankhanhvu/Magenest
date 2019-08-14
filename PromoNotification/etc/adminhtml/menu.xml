@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <!--test-->
+        <add id="Magenest_PromoNotification::notification_menu"
+             title="Notification"
+             module="Magenest_PromoNotification"
+             sortOrder="20"
+             resource="Magenest_PromoNotification::notification_menu"
+        />
+        <!-- START: new node -->
+
+        <add id="Magenest_PromoNotification::all_notification"
+             title="All Notifications"
+             module="Magenest_PromoNotification"
+             sortOrder="10"
+             resource="Magenest_PromoNotification::all_notification"
+
+             parent="Magenest_PromoNotification::notification_menu"
+             action="notification/notification/index"
+        />
+
+    </menu>
+</config>
