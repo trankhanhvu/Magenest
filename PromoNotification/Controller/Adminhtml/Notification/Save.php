@@ -40,6 +40,13 @@ class Save extends \Magento\Backend\App\Action
             $noti->setShort_description($short_description);
             $noti->setRedirect_url($redirect_url);
             $noti->save();
+
+            if($status == 1)
+            {
+                $parameters =['idnoti'=>$noti->getEntity_id()];
+                $this->_eventManager->dispatch('save_notification', $parameters);
+            }
+
         }
 
 

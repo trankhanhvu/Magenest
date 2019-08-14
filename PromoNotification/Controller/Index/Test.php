@@ -6,10 +6,11 @@ class Test extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $notification = $objectManager->create('Magenest\PromoNotification\Model\ResourceModel\Notification\Collection');
+        $notification = $objectManager->create('Magento\Customer\Model\ResourceModel\Customer\Collection');
 
         $output = '';
         foreach ($notification as $product) {
+            $test = $product->getGender();
             $output .= \Zend_Debug::dump($product->debug(), null,
                 false);
         }
