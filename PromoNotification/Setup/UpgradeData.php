@@ -27,7 +27,7 @@ class UpgradeData implements UpgradeDataInterface {
             $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
 
             $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, 'notification_received', [
-                'type' => 'int',
+                'type' => 'text',
                 'label' => 'Notification Received',
                 'input' => 'text',
                 'required' => false,
@@ -41,7 +41,7 @@ class UpgradeData implements UpgradeDataInterface {
             ]);
 
             $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, 'notification_viewed', [
-                'type' => 'int',
+                'type' => 'text',
                 'label' => 'Notification Viewed',
                 'input' => 'text',
                 'required' => false,
