@@ -40,8 +40,9 @@ define([
         },*/
         initObservable: function(){
             this._super();
-            this.observe({'name' : ''});
-
+            this.observe({'name' : '',
+            'productList' : s});
+            console.log(this.productList);
             return this;
         },
 

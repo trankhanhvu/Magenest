@@ -1,0 +1,47 @@
+<style>
+    .action1 > a {
+        border-width: 0 1px 0 0;
+        border-style: solid;
+        border-color: #000000;
+        padding: 0 5px;
+    }
+
+    .action1 > a:last-child {
+        border: none;
+    }
+</style>
+
+<h1>My Notification</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Short Description</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: notilist">
+
+    <!-- ko if: viewed == 1 -->
+    <tr>
+        <td data-bind="text: created_at"></td>
+        <td data-bind="text: short_description"></td>
+        <td class="action1"><a data-bind="attr: { href: redirect_url }">View Details</a><a href="#"
+                                                                                           data-bind="click: $parent.deleteNotification.bind($parent)">Delete</a>
+        </td>
+    </tr>
+    <!-- /ko -->
+
+    <!-- ko if: viewed == null -->
+    <tr class="unread" style="background-color: antiquewhite">
+        <td data-bind="text: created_at"></td>
+        <td data-bind="text: short_description"></td>
+        <td class="action1"><a data-bind="attr: { href: redirect_url }">View Details</a><a href="#"
+                                                                                           data-bind="click: $parent.markasreadNotification.bind($parent)" class="unread2">Mark as read</a><a href="#"
+                                                                                                              data-bind="click: $parent.deleteNotification.bind($parent)"
+        >Delete</a></td>
+    </tr>
+    <!-- /ko -->
+    </tbody>
+</table>
