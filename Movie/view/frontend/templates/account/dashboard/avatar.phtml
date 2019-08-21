@@ -1,6 +1,6 @@
 <html>
     <h2>Avatar</h2>
-   <!-- <img width="250" height="250" src="http://localhost/m2/admin/customer/index/viewfile/image/<?php /*echo base64_encode($block->getImageCustomer()); */?>/" alt="Avatar">
+<!--    <img width="250" height="250" src="http://localhost/m2/admin/customer/index/viewfile/image/<?php /*echo base64_encode($block->getImageCustomer()); */?>/" alt="Avatar">
 -->
-    <img width="250" height="250" src="http://localhost/m2/pub/media/customer/<?php echo $block->getImageCustomer(); ?>" alt="Avatar">
+    <img width="250" height="250" src="<?php echo $block->getBaseUrl() . "pub/media/customer" . $block->getImageCustomer(); ?>" alt="Avatar">
 </html>
