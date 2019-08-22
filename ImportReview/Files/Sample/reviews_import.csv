@@ -1,0 +1,4 @@
+review_id,sku,nickname,title,detail,status,created_at
+33,Giày Bitis,John (nickname of the reviewer),Great product (This is a review summary field),This is a great product indeed! Thank you for your service! (Review field),Approved,2019-07-24 09:08:36
+34,Dép tổ ong,John,Four star review as an example,Great product nevertheless,Pending,2019-07-24 09:09:04
+35,Cá chà bặc,John Doe,How do I wear it?,Is there an instruction?,Not Approved,2019-07-24 09:09:33
