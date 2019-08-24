@@ -1,0 +1,206 @@
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal',
+            'mage/url',
+        ],
+        function($,modal,urlBuilder)
+        {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Location Select',
+                buttons: []
+            };
+
+            modal(options, $('#popup-modal'));
+
+            $("#location").click(function () {
+                $('#popup-modal').modal('openModal');
+            });
+
+            //load city list
+            /*var urlcity = urlBuilder.build('/location/city/getcitylist');
+                $.ajax({
+                    url: 'http://127.0.0.1/ma2/location/city/getcitylist',
+                    type: 'POST',
+                    showLoader:true,
+                    async: false,
+                    dataType: 'json',
+                    complete: function(response) {
+                        var list = JSON.parse(response.responseJSON);
+                        for(var i = 0 ;i < list['LtsItem'].length ; i++)
+                        {
+                            $('#city_id').append($('<option>', {
+                                value: list['LtsItem'][i]['ID'],
+                                text: list['LtsItem'][i]['Title']
+                            }));
+                        }
+                    },
+                    error: function () {
+                        console.log('fail');
+                        console.log('Error happens. Try again.');
+                    }
+                });*/
+
+
+            //select city
+            $('#city_id').change(function () {
+                $('#district_id')
+                    .find('option')
+                    .remove();
+
+                var districturl = urlBuilder.build('/location/district/getdistrictlist');
+                $.ajax({
+                    url: 'http://127.0.0.1/ma2/location/district/getdistrictlist',
+                    type: 'POST',
+                    showLoader:true,
+                    async: false,
+                    dataType: 'json',
+                    data: {
+                        city_id: $(this).children("option:selected").val(),
+                    },
+                    complete: function(response) {
+                        var list = JSON.parse(response.responseJSON);
+                        for(var i = 0 ;i < list.length ; i++)
+                        {
+                            $('#district_id').append($('<option>', {
+                                value: list[i]['ID'],
+                                text: list[i]['Title']
+                            }));
+                        }
+                    },
+                    error: function () {
+                        console.log('fail');
+                        console.log('Error happens. Try again.');
+                    }
+                });
+
+                $('#district_id').focus();
+
+                $('#ward_id')
+                    .find('option')
+                    .remove();
+
+                $.ajax({
+                    url: 'http://127.0.0.1/ma2/location/ward/getwardlist',
+                    type: 'POST',
+                    showLoader:true,
+                    async: false,
+                    dataType: 'json',
+                    data: {
+                        district_id: document.getElementById('district_id').value,
+                    },
+                    complete: function(response) {
+                        var list = JSON.parse(response.responseJSON);
+                        for(var i = 0 ;i < list.length ; i++)
+                        {
+                            $('#ward_id').append($('<option>', {
+                                value: list[i]['ID'],
+                                text: list[i]['Title']
+                            }));
+                        }
+                    },
+                    error: function () {
+                        console.log('fail');
+                        console.log('Error happens. Try again.');
+                    }
+                });
+
+            });
+
+            //select district
+            $('#district_id').change(function () {
+                $('#ward_id')
+                    .find('option')
+                    .remove();
+
+                var districturl = urlBuilder.build('/location/district/getdistrictlist');
+                $.ajax({
+                    url: 'http://127.0.0.1/ma2/location/ward/getwardlist',
+                    type: 'POST',
+                    showLoader:true,
+                    async: false,
+                    dataType: 'json',
+                    data: {
+                        district_id: $(this).children("option:selected").val(),
+                    },
+                    complete: function(response) {
+                        var list = JSON.parse(response.responseJSON);
+                        for(var i = 0 ;i < list.length ; i++)
+                        {
+                            $('#ward_id').append($('<option>', {
+                                value: list[i]['ID'],
+                                text: list[i]['Title']
+                            }));
+                        }
+
+                    },
+                    error: function () {
+                        console.log('fail');
+                        console.log('Error happens. Try again.');
+                    }
+                });
+                $('#ward_id').focus();
+            });
+
+        }
+    );
+</script>
+
+<style type="text/css">
+    .modal-popup .modal-inner-wrap{ width: 50%; }
+
+    #popup-modal { display: none;}
+</style>
+
+<a id="location" style="color: pink;"><?php echo $block->getLocation(); ?></a>
+
+<div id="popup-modal">
+    <form action="http://127.0.0.1/ma2/location/location/savelocation" method="post">
+        <label>
+            Thành Phố :
+            <select name="city_id" id="city_id">
+                <?php foreach ($block->getCityList() as $citylist): ?>
+                <?php $option = "<option value='". $citylist['ID'] . "'";  ?>
+                <?php if ($citylist['ID'] == $block->getCityID()): ?>
+                <?php $option = $option . " selected" ?>
+                <?php endif; ?>
+                <?php $option = $option . ">" . $citylist['Title'] ."</option>"; ?>
+                <?php echo $option; ?>
+                <?php endforeach; ?>
+            </select>
+        </label>
+
+        <label>
+            Quận/Huyện :
+            <select name="district_id" id="district_id">
+                <?php foreach ($block->getDistrictList() as $districtlist): ?>
+                    <?php $option = "<option value='". $districtlist['ID'] . "'";  ?>
+                    <?php if ($districtlist['ID'] == $block->getDistrictID()): ?>
+                        <?php $option = $option . " selected" ?>
+                    <?php endif; ?>
+                    <?php $option = $option . ">" . $districtlist['Title'] ."</option>"; ?>
+                    <?php echo $option; ?>
+                <?php endforeach; ?>
+            </select>
+        </label>
+
+        <label>
+            Phường/Xã :
+            <select name="ward_id" id="ward_id">
+                <?php foreach ($block->getWardList() as $wardlist): ?>
+                    <?php $option = "<option value='". $wardlist['ID'] . "'";  ?>
+                    <?php if ($wardlist['ID'] == $block->getWardID()): ?>
+                        <?php $option = $option . " selected" ?>
+                    <?php endif; ?>
+                    <?php $option = $option . ">" . $wardlist['Title'] ."</option>"; ?>
+                    <?php echo $option; ?>
+                <?php endforeach; ?>
+            </select>
+        </label>
+        <input type="submit" value="Submit" id="confirm">
+    </form>
+</div>
