@@ -40,7 +40,7 @@ class InlineEdit extends \Magento\Backend\App\Action
 
                         $model->setData('name',$postItems[$entityId]['name']);
                         $model->setData('description',$postItems[$entityId]['description']);
-                        $model->setData('rating',$postItems[$entityId]['rating']);
+                        $model->setData('rating',$postItems[$entityId]['rating']*2);
                         $model->setData('director_id',$postItems[$entityId]['director_id']);
                         $model->save();
                     } catch (\Exception $e) {

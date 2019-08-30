@@ -1,3 +1,72 @@
-<div class="admin__field-control">
-    <span>Hello</span>
-</div>
+<style>
+    [type*='radio']{
+        display: none !important;
+    }
+    /*.admin__field-control{
+        margin-left: 30px;
+    }*/
+    /*.admin__field-control:nth-child(2){
+        display: flex;
+    }*/
+
+    .ratinglabel { color: rgb(204, 204, 204); }
+
+    .ratinglabel.active1 { color: rgb(255, 51, 0);}
+    .ratinglabel.active2 { color: rgb(255, 51, 0);}
+    .ratinglabel.active3 { color: rgb(255, 51, 0);}
+    .ratinglabel.active4 { color: rgb(255, 51, 0);}
+    .ratinglabel.active5 { color: rgb(255, 51, 0);}
+
+    .ratinglabel.checkedbox1 { color: rgb(51, 51, 51); }
+    .ratinglabel.checkedbox2 { color: rgb(51, 51, 51); }
+    .ratinglabel.checkedbox3 { color: rgb(51, 51, 51); }
+    .ratinglabel.checkedbox4 { color: rgb(51, 51, 51); }
+    .ratinglabel.checkedbox5 { color: rgb(51, 51, 51); }
+
+</style>
+
+
+<body>
+        <div class="admin__field-control" data-widget="ratingControl">
+
+            <label class="ratinglabel" style="font-size: 20px" data-bind="event : { mouseenter : mouseOver, mouseleave : mouseOut },css: {active1: checkHover()[0]['rating1'] , checkedbox1 : checkedBox() >= 1 }">
+            <input type="radio" name="rating" id="Price_1" value="1" data-bind="checked: checkedBox,click :selectRating" aria-required="true" />
+            &#9733;
+            </label>
+
+            <label class="ratinglabel" style="font-size: 20px" data-bind="event : { mouseenter : mouseOver2, mouseleave : mouseOut2 },css: {active2 : checkHover()[0]['rating2'] , checkedbox2 : checkedBox() >= 2 }">
+            <input type="radio"  name="rating" id="Price_2" value="2" data-bind="checked: checkedBox,click :selectRating" aria-required="true" />
+            &#9733;
+            </label>
+
+            <label class="ratinglabel" style="font-size: 20px" data-bind="event : { mouseenter : mouseOver3, mouseleave : mouseOut3 },css: {active3: checkHover()[0]['rating3'] , checkedbox3 : checkedBox() >= 3 }">
+            <input type="radio"  name="rating" id="Price_3" value="3" data-bind="checked: checkedBox,click :selectRating" aria-required="true" />
+                &#9733;
+            </label>
+
+            <label class="ratinglabel" style="font-size: 20px" data-bind="event : { mouseenter : mouseOver4, mouseleave : mouseOut4 },css: {active4: checkHover()[0]['rating4'] , checkedbox4 : checkedBox() >= 4 }">
+            <input type="radio"  name="rating" id="Price_4" value="4" data-bind="checked: checkedBox,click :selectRating" aria-required="true" />
+                &#9733;
+            </label>
+
+            <label class="ratinglabel" style="font-size: 20px" data-bind="event : { mouseenter : mouseOver5, mouseleave : mouseOut5 },css: {active5: checkHover()[0]['rating5'] , checkedbox5 : checkedBox() == 5 }">
+            <input type="radio"  name="rating" id="Price_5" value="5" data-bind="checked: checkedBox,click :selectRating" aria-required="true" />
+                &#9733;
+            </label>
+
+        </div>
+
+    <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+    <script type="text/javascript">
+        require([
+            "jquery",
+            "mage/mage",
+            "Magento_Review/js/rating"
+        ], function($){
+            "use strict";
+
+            console.log('Hello');
+            $('[data-widget=ratingControl]').ratingControl();
+        });
+    </script>
+</body>
