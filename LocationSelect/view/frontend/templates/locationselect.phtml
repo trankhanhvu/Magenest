@@ -175,6 +175,7 @@
         <label>
             Quận/Huyện :
             <select name="district_id" id="district_id">
+                <?php if ($block->getDistrictList()) : ?>
                 <?php foreach ($block->getDistrictList() as $districtlist): ?>
                     <?php $option = "<option value='". $districtlist['ID'] . "'";  ?>
                     <?php if ($districtlist['ID'] == $block->getDistrictID()): ?>
@@ -183,12 +184,14 @@
                     <?php $option = $option . ">" . $districtlist['Title'] ."</option>"; ?>
                     <?php echo $option; ?>
                 <?php endforeach; ?>
+                <?php endif; ?>
             </select>
         </label>
 
         <label>
             Phường/Xã :
             <select name="ward_id" id="ward_id">
+                <?php if ($block->getWardList()) : ?>
                 <?php foreach ($block->getWardList() as $wardlist): ?>
                     <?php $option = "<option value='". $wardlist['ID'] . "'";  ?>
                     <?php if ($wardlist['ID'] == $block->getWardID()): ?>
@@ -197,6 +200,7 @@
                     <?php $option = $option . ">" . $wardlist['Title'] ."</option>"; ?>
                     <?php echo $option; ?>
                 <?php endforeach; ?>
+                <?php endif; ?>
             </select>
         </label>
         <input type="submit" value="Submit" id="confirm">

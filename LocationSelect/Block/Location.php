@@ -49,7 +49,10 @@ class Location extends Template
             $this->_curl->get('https://thongtindoanhnghiep.co/api/ward/' . $ward_id);
             $wardInfo = json_decode($this->_curl->getBody(),true);
 
-            $location = $cityInfo['Title'] . " . " . $districtInfo['Title'] . " . " . $wardInfo['Title'];
+            if($city_id == null || $district_id == null || $ward_id)
+                $location = "Location";
+            else
+                $location = $cityInfo['Title'] . " . " . $districtInfo['Title'] . " . " . $wardInfo['Title'];
         }
         elseif (isset($city_idCookie) && isset($district_idCookie) && isset($ward_idCookie))
         {
@@ -84,6 +87,10 @@ class Location extends Template
             $customer = $this->customerFactory->create();
             $customer->load($customerID);
             $city_id = $customer->getData('city_id');
+            if($city_id == null)
+            {
+                $city_id = 1;
+            }
         }
         elseif(isset($city_idCookie))
         {
@@ -116,6 +123,10 @@ class Location extends Template
             $customer = $this->customerFactory->create();
             $customer->load($customerID);
             $district_id = $customer->getData('district_id');
+            if($district_id == null)
+            {
+                $district_id = 279;
+            }
         }
         elseif(isset($district_idCookie))
         {
@@ -148,6 +159,10 @@ class Location extends Template
             $customer = $this->customerFactory->create();
             $customer->load($customerID);
             $ward_id = $customer->getData('ward_id');
+            if($ward_id == null)
+            {
+                $ward_id = 5318;
+            }
         }
         elseif(isset($ward_idCookie))
         {
