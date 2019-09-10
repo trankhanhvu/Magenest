@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+
+            <resource id="Magento_Backend::admin">
+
+
+                <resource id="Magenest_Cybergame::room_extra_option" title="Room Extra Option">
+
+                        <resource id="Magenest_Cybergame::cyber_room" title="Cyber room" />
+
+                </resource>
+
+            </resource>
+
+        </resources>
+    </acl>
+</config>

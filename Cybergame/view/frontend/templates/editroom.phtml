@@ -1,0 +1,33 @@
+<h1>Edit room id : <?php echo $block->getRoomInfo()->getDataByKey('id'); ?></h1>
+
+<form action="<?php echo $block->getUrl('cybergame/updateroominfo/save/') ?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $block->getRoomInfo()->getDataByKey('id'); ?>">
+    <label>
+        Name:
+        <input type="text" name="name" value="<?php echo $block->getRoomInfo()->getDataByKey('name'); ?>" disabled='disabled'>
+    </label><br>
+    <label>
+        Price:
+        <input type="text" name="price" value="<?php echo $block->getRoomInfo()->getDataByKey('price'); ?>" disabled='disabled'>
+    </label><br>
+    <label>
+        Number PC:
+        <input type="text" name="number_pc" value="<?php echo $block->getRoomInfo()->getDataByKey('number_pc'); ?>">
+    </label><br>
+    <label>
+        Address:
+        <input type="text" name="address" value="<?php echo $block->getRoomInfo()->getDataByKey('address'); ?>">
+    </label><br>
+    <label>
+        Food Price:
+        <input type="text" name="food_price" value="<?php echo $block->getRoomInfo()->getDataByKey('food_price'); ?>">
+    </label><br>
+    <label>
+        Drink Price:
+        <input type="text" name="drink_price" value="<?php echo $block->getRoomInfo()->getDataByKey('drink_price'); ?>">
+    </label><br>
+
+    <input type="submit" value="Submit"><br>
+</form>
+
+

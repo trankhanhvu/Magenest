@@ -1,0 +1,52 @@
+<script>
+    require(['jquery','mage/url'], function($,urlBuilder) {
+        $( "#qty" ).keyup(function() {
+            $('.price').text('$'+$('#room-price').val() * $('#qty').val());
+        });
+
+        $( "#account-name" ).keyup(function() {
+            var url = urlBuilder.build('cybergame/accountname/index');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    account_name: $('#account-name').val(),
+                    hour: $( "#qty" ).val(),
+                    product_id : $('#product-id').val()
+                },
+                complete: function(response) {
+                    console.log(response);
+                    if(response.responseJSON.totalRecords === 1)
+                        $('.checkExistAccount').html("<span style='color: red'>Account was exist in our\n" +
+                            "system. You are buying hour for this acocunt</span>");
+                    else
+                        $('.checkExistAccount').html("<span style='color: blue'>We will create\n" +
+                            "new account for you. Default password = 1. You should change the password after\n" +
+                            "login</span>");
+                },
+                error: function () {
+                    console.log('fail');
+                    console.log('Error happens. Try again.');
+                }
+            });
+        });
+    });
+</script>
+
+<?php if ($block->getCyberRoomById()): ?>
+<?php foreach ($block->getCyberRoomById() as $room) : ?>
+    Number PC : <?= $room['number_pc'] ?><br>
+    Address : <?= $room['address'] ?><br>
+    Food Price : <?= $room['food_price'] ?><br>
+    Drink Price : <?= $room['drink_price'] ?><br>
+
+    <input type="hidden" id="room-price" name="room-price" value="<?= $block->getProductPrice2() ?>">
+        <input type="hidden" id="product-id" name="product-id" value="<?= $room['product_id'] ?>">
+
+        <span>Account Name :</span><br>
+        <input type="text" name="account-name" id="account-name" style="width: 180px; !important;"><br>
+        <span class="checkExistAccount"></span><br>
+    <?php endforeach; ?>
+<?php endif; ?>
+

@@ -1,0 +1,27 @@
+<style type="text/css">
+    a[disabled="disabled"] {
+        pointer-events: none;
+        color : grey !important;
+    }
+</style>
+
+<h1>Update room info</h1>
+
+<table>
+    <tr>
+        <th>product_id</th>
+        <th>Room name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+
+    <?php foreach ($block->getRoomExtraOption() as $room): ?>
+    <tr>
+        <td><?php echo $room->getData('product_id'); ?></td>
+        <td><?php echo $room->getData('name'); ?></td>
+        <td><?php echo $room->getData('price'); ?></td>
+        <td><a href="<?php echo $block->getUrl('cybergame/updateroominfo/edit/'); ?>?id=<?php echo $room->getData('id') ?>" <?php if (!$block->checkCyberManager()): ?> disabled='disabled' <?php endif; ?>>Edit</a></td>
+    </tr>
+    <?php endforeach; ?>
+
+</table>
