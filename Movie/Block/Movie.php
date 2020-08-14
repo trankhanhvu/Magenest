@@ -32,14 +32,23 @@ class Movie extends Template
         $connection = $resource->getConnection();
         $sql = "SELECT magenest_movie.name as nameMovie, magenest_director.name as nameDirector, magenest_actor.name as nameActor
                     FROM magenest_movie,magenest_director,magenest_movie_actor,magenest_actor
-                    WHERE magenest_movie.movie_id =  magenest_movie_actor.movie_id 
-                    AND  magenest_movie.director_id = magenest_director.director_id 
+                    WHERE magenest_movie.movie_id =  magenest_movie_actor.movie_id
+                    AND  magenest_movie.director_id = magenest_director.director_id
                     AND magenest_movie_actor.actor_id = magenest_actor.actor_id";
         $movie = $connection->fetchAll($sql);*/
 
         return $movie;
     }
 
+    public function testCreateBlock()
+    {
+        $block = $this->getLayout()->createBlock("Magenest\Movie\Block\Movie2");
+        return $block;
+    }
 
-
+    public function getMediaUrl()
+    {
+        $mediaUrl = $this ->_storeManager-> getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA );
+        return $mediaUrl;
+    }
 }

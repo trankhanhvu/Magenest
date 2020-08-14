@@ -62,57 +62,57 @@
 
         <filters name="listing_filters"/>
 
-        <massaction name="listing_massaction">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
-                </item>
-            </argument>
-            <action name="delete">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">delete</item>
-                        <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="movie/movie/delete"/>
-                        <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Delete Post</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
-                                selected items?
-                            </item>
-                        </item>
-                    </item>
-                </argument>
-            </action>
+<!--        <massaction name="listing_massaction">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--            <action name="delete">-->
+<!--                <argument name="data" xsi:type="array">-->
+<!--                    <item name="config" xsi:type="array">-->
+<!--                        <item name="type" xsi:type="string">delete</item>-->
+<!--                        <item name="label" xsi:type="string" translate="true">Delete</item>-->
+<!--                        <item name="url" xsi:type="url" path="movie/movie/delete"/>-->
+<!--                        <item name="confirm" xsi:type="array">-->
+<!--                            <item name="title" xsi:type="string" translate="true">Delete Post</item>-->
+<!--                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete-->
+<!--                                selected items?-->
+<!--                            </item>-->
+<!--                        </item>-->
+<!--                    </item>-->
+<!--                </argument>-->
+<!--            </action>-->
 
-            <action name="edit">
-                <settings>
-                    <callback>
-                        <target>editSelected</target>
-                        <provider>magenest_movie_movie_listing.magenest_movie_movie_listing.spinner_columns_editor
-                        </provider>
-                    </callback>
-                    <type>edit</type>
-                    <label translate="true">Edit</label>
-                </settings>
-            </action>
+<!--            <action name="edit">-->
+<!--                <settings>-->
+<!--                    <callback>-->
+<!--                        <target>editSelected</target>-->
+<!--                        <provider>magenest_movie_movie_listing.magenest_movie_movie_listing.spinner_columns_editor-->
+<!--                        </provider>-->
+<!--                    </callback>-->
+<!--                    <type>edit</type>-->
+<!--                    <label translate="true">Edit</label>-->
+<!--                </settings>-->
+<!--            </action>-->
 
-            <action name="change_status">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">change_status</item>
-                        <item name="label" xsi:type="string" translate="true">Change status</item>
-                    </item>
-                </argument>
-                <argument name="actions" xsi:type="configurableObject">
-                    <argument name="class" xsi:type="string">Magenest\Movie\Ui\Component\MassAction\Status\Options</argument>
-                    <argument name="data" xsi:type="array">
-                        <item name="urlPath" xsi:type="string">rewardpoints/earningrates/massStatus</item>
-                        <item name="paramName" xsi:type="string">status</item>
-                    </argument>
-                </argument>
-            </action>
+<!--            <action name="change_status">-->
+<!--                <argument name="data" xsi:type="array">-->
+<!--                    <item name="config" xsi:type="array">-->
+<!--                        <item name="type" xsi:type="string">change_status</item>-->
+<!--                        <item name="label" xsi:type="string" translate="true">Change status</item>-->
+<!--                    </item>-->
+<!--                </argument>-->
+<!--                <argument name="actions" xsi:type="configurableObject">-->
+<!--                    <argument name="class" xsi:type="string">Magenest\Movie\Ui\Component\MassAction\Status\Options</argument>-->
+<!--                    <argument name="data" xsi:type="array">-->
+<!--                        <item name="urlPath" xsi:type="string">rewardpoints/earningrates/massStatus</item>-->
+<!--                        <item name="paramName" xsi:type="string">status</item>-->
+<!--                    </argument>-->
+<!--                </argument>-->
+<!--            </action>-->
 
-        </massaction>
+<!--        </massaction>-->
 
         <paging name="listing_paging"/>
         <exportButton name="export_button"/>

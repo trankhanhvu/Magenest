@@ -72,4 +72,11 @@
     <type name="Magento\Catalog\Block\Product\ListProduct">
         <plugin name="magenest_movie_product_list_text" type="Magenest\Movie\Plugin\ProductListPlugin" />
     </type>
+
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="change_product_name" type="Magenest\Movie\Plugin\ItemPlugin" />
+    </type>
+
+    <preference for="Magenest\Movie\Api\CustomerGreetingInterface"
+                type="Magenest\Movie\Model\CustomerGreeting"/>
 </config>

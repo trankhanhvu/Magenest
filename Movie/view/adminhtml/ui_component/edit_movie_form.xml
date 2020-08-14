@@ -68,6 +68,7 @@
                 <required>true</required>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="test-validation" xsi:type="boolean">true</rule>
                 </validation>
             </settings>
         </field>

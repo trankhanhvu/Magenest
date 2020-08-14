@@ -1,50 +1,142 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
+
+        .autoplaytop .imageslider {
+            margin: auto;
+            object-fit: cover;
+            align-content: center;
         }
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
+        .autoplaytop {
+            margin: 0 auto;
         }
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
+        .image-item{
+            height: 92px;
+            display: flex !important;
         }
     </style>
 </head>
 <body>
 
-<h2>Movie Information</h2>
+<div class="slider autoplaytop">
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/fb_mooz.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/fb_as.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/fb_nb.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/home_5.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/home_4.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/banner/tiger-banner.png"/>
+    </div>
 
-<table>
-    <tr>
-        <th>Movie</th>
-        <th>Description</th>
-        <th>Rating</th>
-        <th>Director</th>
-        <th>Actor</th>
-    </tr>
-
-    <?php foreach ($block->getMovieInformation() as $info): ?>
-    <tr>
-        <td><?php echo $info['nameMovie'] ?></td>
-        <td><?php echo $info['description'] ?></td>
-        <td><?php echo $info['rating'] ?></td>
-        <td><?php echo $info['nameDirector'] ?></td>
-        <td><?php echo $info['nameActor'] ?></td>
-    </tr>
-
-    <?php endforeach; ?>
-
-</table>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/fb_sorel.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/fb_birk.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/fb_clarks.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/fb_doc.png"/>
+    </div>
+    <div class="image-item">
+        <img
+            alt=""
+            class="imageslider"
+            src="https://www.infinityshoes.com/media/wysiwyg/slideshow/home_6.png"/>
+    </div>
+</div>
 
 </body>
 </html>
+
+
+<script>
+    require([
+            'jquery',
+            'Magenest_Movie/js/view/slick'
+        ], function ($) {
+
+            $('.autoplaytop').slick({
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                autoplay: false,
+                autoplaySpeed: 2000,
+                infinite: true,
+                draggable: false,
+                adaptiveHeight: true,
+                prevArrow: "<img class='slick-prev' src=\"<?php echo $block->getViewFileUrl('Magenest_Movie::images/back.svg'); ?>\" alt=\"Arrow Left\"/>",
+                nextArrow: "<img class='slick-next' src=\"<?php echo $block->getViewFileUrl('Magenest_Movie::images/next.svg'); ?>\" alt=\"Arrow Right\"/>",
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        }
+                    }
+                ]
+            });
+
+        }
+    );
+</script>

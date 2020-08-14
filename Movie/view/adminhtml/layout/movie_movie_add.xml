@@ -5,10 +5,11 @@
         <title>
             Add New Movie!!!
         </title>
+
     </head>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="new_movie_form"/>
+            <uiComponent name="edit_movie_form"/>
         </referenceContainer>
     </body>
 </page>
