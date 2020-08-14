@@ -40,6 +40,10 @@ class Movie extends Template
         return $movie;
     }
 
+    public function testFunction(){
+        return "test 1";
+    }
+
     public function testCreateBlock()
     {
         $block = $this->getLayout()->createBlock("Magenest\Movie\Block\Movie2");
