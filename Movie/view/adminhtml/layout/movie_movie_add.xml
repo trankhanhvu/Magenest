@@ -1,15 +1,11 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="admin-2columns-left">
     <head>
         <title>
             Add New Movie!!!
         </title>
 
     </head>
-    <body>
-        <referenceContainer name="content">
-            <uiComponent name="edit_movie_form"/>
-        </referenceContainer>
-    </body>
+    <update handle="movie_movie_edit"/>
 </page>
